@@ -1,0 +1,539 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5F9403BC-F511-4F46-8876-375D0EFAFA42}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WindowsFormsApplication1</RootNamespace>
+    <AssemblyName>Stream Farm Manager</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Farm_ico.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.3.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.ConnectionInfo, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Scripting.11.0.2100.61\lib\Microsoft.SqlServer.ConnectionInfo.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Management.Sdk.Sfc, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Scripting.11.0.2100.61\lib\Microsoft.SqlServer.Management.Sdk.Sfc.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Smo, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Scripting.11.0.2100.61\lib\Microsoft.SqlServer.Smo.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BL\BL.cs" />
+    <Compile Include="DAL\DAL.cs" />
+    <Compile Include="PL\ACC\frm_ACC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\ACC\frm_ACC.Designer.cs">
+      <DependentUpon>frm_ACC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\ACC\frm_Jor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\ACC\frm_Jor.Designer.cs">
+      <DependentUpon>frm_Jor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\ACC\frm_JorAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\ACC\frm_JorAdd.Designer.cs">
+      <DependentUpon>frm_JorAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\ACC\frm_JorB.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\ACC\frm_JorB.Designer.cs">
+      <DependentUpon>frm_JorB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\ACC\frm_JorBAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\ACC\frm_JorBAdd.Designer.cs">
+      <DependentUpon>frm_JorBAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\ACC\frm_ST.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\ACC\frm_ST.Designer.cs">
+      <DependentUpon>frm_ST.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\Cash\frm_Payin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\Cash\frm_Payin.Designer.cs">
+      <DependentUpon>frm_Payin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\Cash\frm_PayOut.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\Cash\frm_PayOut.Designer.cs">
+      <DependentUpon>frm_PayOut.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\G\frm_ACC_Settings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\G\frm_ACC_Settings.Designer.cs">
+      <DependentUpon>frm_ACC_Settings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\G\frm_AlarmOtherAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\G\frm_AlarmOtherAdd.Designer.cs">
+      <DependentUpon>frm_AlarmOtherAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\G\frm_AlarmSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\G\frm_AlarmSet.Designer.cs">
+      <DependentUpon>frm_AlarmSet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\G\frm_AlarmShow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\G\frm_AlarmShow.Designer.cs">
+      <DependentUpon>frm_AlarmShow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\G\frm_Backup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\G\frm_Backup.Designer.cs">
+      <DependentUpon>frm_Backup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\G\frm_Branches.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\G\frm_Branches.Designer.cs">
+      <DependentUpon>frm_Branches.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\G\frm_G.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\G\frm_G.Designer.cs">
+      <DependentUpon>frm_G.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\G\frm_PreventNo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\G\frm_PreventNo.Designer.cs">
+      <DependentUpon>frm_PreventNo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\G\frm_Search.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\G\frm_Search.Designer.cs">
+      <DependentUpon>frm_Search.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\G\frm_ServerInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\G\frm_ServerInfo.Designer.cs">
+      <DependentUpon>frm_ServerInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\G\frm_Witing.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\G\frm_Witing.Designer.cs">
+      <DependentUpon>frm_Witing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\Pur\frm_Pre.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\Pur\frm_Pre.Designer.cs">
+      <DependentUpon>frm_Pre.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\Pur\frm_Pur2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\Pur\frm_Pur2.Designer.cs">
+      <DependentUpon>frm_Pur2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\Pur\frm_PurAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\Pur\frm_PurAdd.Designer.cs">
+      <DependentUpon>frm_PurAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\Pur\frm_Ven.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\Pur\frm_Ven.Designer.cs">
+      <DependentUpon>frm_Ven.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\Rep\frm_Rep.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\Rep\frm_Rep.Designer.cs">
+      <DependentUpon>frm_Rep.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\Rep\frm_RepDes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\Rep\frm_RepDes.Designer.cs">
+      <DependentUpon>frm_RepDes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\Sal\frm_Cust.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\Sal\frm_Cust.Designer.cs">
+      <DependentUpon>frm_Cust.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\Sal\frm_Sal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\Sal\frm_Sal.Designer.cs">
+      <DependentUpon>frm_Sal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\Sal\frm_SalAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\Sal\frm_SalAdd.Designer.cs">
+      <DependentUpon>frm_SalAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\Sal\frm_Sre.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\Sal\frm_Sre.Designer.cs">
+      <DependentUpon>frm_Sre.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\Sal\frm_SalSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\Sal\frm_SalSearch.Designer.cs">
+      <DependentUpon>frm_SalSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\Store\frm_Items.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\Store\frm_Items.Designer.cs">
+      <DependentUpon>frm_Items.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\Store\frm_ItemsCard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\Store\frm_ItemsCard.Designer.cs">
+      <DependentUpon>frm_ItemsCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\G\frm_Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\G\frm_Login.Designer.cs">
+      <DependentUpon>frm_Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\G\frm_Main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\G\frm_Main.Designer.cs">
+      <DependentUpon>frm_Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\Store\frm_OpenAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\Store\frm_OpenAdd.Designer.cs">
+      <DependentUpon>frm_OpenAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\Store\frm_OpenStock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\Store\frm_OpenStock.Designer.cs">
+      <DependentUpon>frm_OpenStock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\Store\frm_ProductWhenInsert.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\Store\frm_ProductWhenInsert.Designer.cs">
+      <DependentUpon>frm_ProductWhenInsert.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\Store\frm_StoreWithdraw.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\Store\frm_StoreWithdraw.Designer.cs">
+      <DependentUpon>frm_StoreWithdraw.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\Store\Tat3eemWithdraw.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\Store\Tat3eemWithdraw.Designer.cs">
+      <DependentUpon>Tat3eemWithdraw.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\Store\Tat3eemWithdrawAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\Store\Tat3eemWithdrawAdd.Designer.cs">
+      <DependentUpon>Tat3eemWithdrawAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\Tools\btn.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PL\Tools\btn.Designer.cs">
+      <DependentUpon>btn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="PL\ACC\frm_ACC.resx">
+      <DependentUpon>frm_ACC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\ACC\frm_Jor.resx">
+      <DependentUpon>frm_Jor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\ACC\frm_JorAdd.resx">
+      <DependentUpon>frm_JorAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\ACC\frm_JorB.resx">
+      <DependentUpon>frm_JorB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\ACC\frm_JorBAdd.resx">
+      <DependentUpon>frm_JorBAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\ACC\frm_ST.resx">
+      <DependentUpon>frm_ST.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\Cash\frm_Payin.resx">
+      <DependentUpon>frm_Payin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\Cash\frm_PayOut.resx">
+      <DependentUpon>frm_PayOut.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\G\frm_ACC_Settings.resx">
+      <DependentUpon>frm_ACC_Settings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\G\frm_AlarmOtherAdd.resx">
+      <DependentUpon>frm_AlarmOtherAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\G\frm_AlarmSet.resx">
+      <DependentUpon>frm_AlarmSet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\G\frm_AlarmShow.resx">
+      <DependentUpon>frm_AlarmShow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\G\frm_Backup.resx">
+      <DependentUpon>frm_Backup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\G\frm_Branches.resx">
+      <DependentUpon>frm_Branches.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\G\frm_G.resx">
+      <DependentUpon>frm_G.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\G\frm_PreventNo.resx">
+      <DependentUpon>frm_PreventNo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\G\frm_Search.resx">
+      <DependentUpon>frm_Search.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\G\frm_ServerInfo.resx">
+      <DependentUpon>frm_ServerInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\G\frm_Witing.resx">
+      <DependentUpon>frm_Witing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\Pur\frm_Pre.resx">
+      <DependentUpon>frm_Pre.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\Pur\frm_Pur2.resx">
+      <DependentUpon>frm_Pur2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\Pur\frm_PurAdd.resx">
+      <DependentUpon>frm_PurAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\Pur\frm_Ven.resx">
+      <DependentUpon>frm_Ven.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\Rep\frm_Rep.resx">
+      <DependentUpon>frm_Rep.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\Rep\frm_RepDes.resx">
+      <DependentUpon>frm_RepDes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\Sal\frm_Cust.resx">
+      <DependentUpon>frm_Cust.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\Sal\frm_Sal.resx">
+      <DependentUpon>frm_Sal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\Sal\frm_SalAdd.resx">
+      <DependentUpon>frm_SalAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\Sal\frm_Sre.resx">
+      <DependentUpon>frm_Sre.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\Sal\frm_SalSearch.resx">
+      <DependentUpon>frm_SalSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\Store\frm_Items.resx">
+      <DependentUpon>frm_Items.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\Store\frm_ItemsCard.resx">
+      <DependentUpon>frm_ItemsCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\G\frm_Login.resx">
+      <DependentUpon>frm_Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\G\frm_Main.resx">
+      <DependentUpon>frm_Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\Store\frm_OpenAdd.resx">
+      <DependentUpon>frm_OpenAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\Store\frm_OpenStock.resx">
+      <DependentUpon>frm_OpenStock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\Store\frm_ProductWhenInsert.resx">
+      <DependentUpon>frm_ProductWhenInsert.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\Store\frm_StoreWithdraw.resx">
+      <DependentUpon>frm_StoreWithdraw.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\Store\Tat3eemWithdraw.resx">
+      <DependentUpon>Tat3eemWithdraw.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\Store\Tat3eemWithdrawAdd.resx">
+      <DependentUpon>Tat3eemWithdrawAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\Tools\btn.resx">
+      <DependentUpon>btn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RIP_48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Lock_128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mini1_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\close1_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\new_48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edit_48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save_48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete_48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancel_48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Search_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Edit_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Grave_48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Alarm4_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Display_48 %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Farm_ico.ico" />
+    <None Include="Resources\close2_16.png" />
+    <None Include="Resources\close2_16.bmp" />
+    <None Include="Resources\Print_64.png" />
+    <None Include="Resources\View_64.png" />
+    <None Include="Resources\Farm_ico.ico" />
+    <None Include="Resources\Maximize_16.png" />
+    <None Include="Resources\Close_24.png" />
+    <None Include="Resources\Mini_24.png" />
+    <None Include="Resources\Maximize_24.png" />
+    <None Include="Resources\Maximize_32.png" />
+    <None Include="Resources\RestoreDowen2_32.png" />
+    <None Include="Resources\RestoreDown_32.png" />
+    <None Include="Resources\Tat3eem_32.png" />
+    <None Include="Resources\Tat3eem_48.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
