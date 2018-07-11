@@ -41,7 +41,7 @@ namespace WindowsFormsApplication1.PL.Pur
             #region dgv Fildes
             var Item_ID = new DataGridViewTextBoxColumn();
             Item_ID.Name = "ID";
-            Item_ID.DataPropertyName = "ItemID";
+            Item_ID.DataPropertyName = "Items2ID";
             Item_ID.HeaderText = "كود الصنف";
             Item_ID.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             Item_ID.Width = 130;
@@ -123,6 +123,7 @@ namespace WindowsFormsApplication1.PL.Pur
                 DataRow dRow = dt.NewRow();
                 foreach (DataGridViewCell cell in row.Cells)
                 {
+
                     if (cell.Value.ToString() == "") { dRow[cell.ColumnIndex] = null; }
                     else { dRow[cell.ColumnIndex] = cell.Value; }
                 }
