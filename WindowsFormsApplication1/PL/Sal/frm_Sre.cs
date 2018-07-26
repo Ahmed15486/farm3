@@ -327,7 +327,7 @@ namespace WindowsFormsApplication1.PL.Sal
             sre.ID = (txt_ID.Text == "") ? "" : txt_ID.Text;
             sre.Date = Convert.ToDateTime(txt_Date.Text);
             sre.PayTypeID = Convert.ToInt32(com_PayType.SelectedValue);
-            sre.CustID = (com_Cust.SelectedValue != null) ? com_Cust.SelectedValue.ToString() : "";
+            sre.CustID = (com_Cust.SelectedValue != null) ? com_Cust.SelectedValue.ToString() : null;
             sre.Notes = txt_Notes.Text;
             sre.TotalSPrice = (txt_TotalSPrice.Text != "") ? Convert.ToDecimal(txt_TotalSPrice.Text) : 0;
             sre.DisVal = (txt_DisVal.Text.Trim() != "") ? Convert.ToDecimal(txt_DisVal.Text.Trim()) : 0;

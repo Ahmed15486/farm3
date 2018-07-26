@@ -1228,10 +1228,16 @@ namespace WindowsFormsApplication1.PL.Rep
                     {
                         if (Convert.ToBoolean(r.Cells[5].Value) == true)
                         {
-                            txt_SQL.Text = SELECT(r.Cells[5].RowIndex) + FROM() + WHERE() + "Group By [" + r.Cells[0].Value + "] " + UNION_ALL() + from + where;
+                            txt_SQL.Text = SELECT(r.Cells[5].RowIndex) + FROM() + WHERE() + "Group By [" + TranArToEn(r.Cells[0].Value.ToString()) + "] " + UNION_ALL() + from + where;
 
                             dt_Rep = rep.Select(txt_SQL.Text);
-                            DGV.DataSource = null;
+                        #region Translate dgv.Columns
+                        foreach (DataColumn c in dt_Rep.Columns)
+                        {
+                            c.ColumnName = list_Forward.Items[c.Ordinal].ToString();
+                        }
+                        #endregion
+                        DGV.DataSource = null;
 
                             DataRow total_rowG = dt_Rep.NewRow();
                             total_rowG.ItemArray = dt_Rep.Rows[dt_Rep.Rows.Count - 1].ItemArray;
@@ -1489,7 +1495,7 @@ namespace WindowsFormsApplication1.PL.Rep
                 if (dgv_Conditions.Rows[e.RowIndex].Cells[0].Value == null || dgv_Conditions.Rows[e.RowIndex].Cells[2].Value == null) { return; }
                 if ((dgv_Conditions.Rows[e.RowIndex].Cells[2] as DataGridViewComboBoxCell).Items.IndexOf(dgv_Conditions.Rows[e.RowIndex].Cells[2].Value) == 0) { return; }
 
-                com_Fields.Text = dgv_Conditions.Rows[e.RowIndex].Cells[0].Value.ToString();
+                com_Fields.Text = TranArToEn(dgv_Conditions.Rows[e.RowIndex].Cells[0].Value.ToString());
                 if (dgv_Conditions.Focused && dgv_Conditions.CurrentCell.ColumnIndex == 3 && com_Fields.SelectedValue.ToString() == "datetime")
                 {
                     dtp.Location = dgv_Conditions.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, false).Location;

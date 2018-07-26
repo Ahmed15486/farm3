@@ -304,7 +304,7 @@ namespace WindowsFormsApplication1.PL.Store
         }
         void var()
         {
-            items.ID = (txt_ID.Text != "")? txt_ID.Text : "";
+            items.ID = (txt_ID.Text != "")? txt_ID.Text : null;
             items.No = txt_No.Text.Trim();
             items.Name = txt_ItemName.Text;
             items.Sex = (com_Sex.SelectedValue != null) ? (int)com_Sex.SelectedValue : -1;

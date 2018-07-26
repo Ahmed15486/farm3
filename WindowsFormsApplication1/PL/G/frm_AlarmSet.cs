@@ -467,7 +467,11 @@ namespace WindowsFormsApplication1.PL.G
         private void chk_Other_CheckedChanged(object sender, EventArgs e)
         {
             dgv_Other.Visible = chk_Other.Checked;
-            btn_Add.Visible = chk_Other.Checked;
+            if(Tag.ToString() == "New" || Tag.ToString() == "Edit")
+            {
+                btn_Add.Visible = chk_Other.Checked;
+            }
+
         }
 
         private void btn_Add_Click(object sender, EventArgs e)

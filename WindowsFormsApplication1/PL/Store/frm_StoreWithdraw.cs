@@ -694,6 +694,59 @@ namespace WindowsFormsApplication1.PL.Store
         {
             com_Type.SelectedValue = -1;
         }
+
+        #region txt_SearchItem
+        private void txt_SearchItem_Enter(object sender, EventArgs e)
+        {
+            txt_SearchItem.Text = "";
+            txt_SearchItem.ForeColor = Color.Black;
+        }
+        private void txt_SearchItem_Leave(object sender, EventArgs e)
+        {
+            txt_SearchItem.Text = "Search";
+            txt_SearchItem.ForeColor = Color.Silver;
+        }
+        private void txt_SearchItem_MouseEnter(object sender, EventArgs e)
+        {
+            if (txt_SearchItem.Text == "Search")
+            {
+                txt_SearchItem.ForeColor = Color.CadetBlue;
+                txt_SearchItem.Font = new Font(txt_SearchItem.Font, FontStyle.Bold);
+            }
+        }
+        private void txt_SearchItem_MouseLeave(object sender, EventArgs e)
+        {
+            if (txt_SearchItem.Text == "Search")
+            {
+                txt_SearchItem.ForeColor = Color.Silver;
+                txt_SearchItem.Font = new Font(txt_SearchItem.Font, FontStyle.Regular);
+            }
+        }
+
+        private void txt_SearchItem_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            #region only numbers
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+                if (e.KeyChar != 043) { System.Media.SystemSounds.Hand.Play(); }
+            }
+            #endregion
+
+            if (e.KeyChar == 13 && txt_SearchItem.Text.Trim() != "")
+            {
+                foreach (DataGridViewRow r in dgv.Rows)
+                {
+                    if(r.Cells["No"].Value.ToString() == txt_SearchItem.Text)
+                    {
+                        dgv.CurrentCell = r.Cells["No"];
+                        dgv.CurrentRow.Cells["choice"].Value = false;
+                        dgv.CurrentRow.DefaultCellStyle.BackColor = Color.White;
+                    }
+                }
+            }
+        }
+        #endregion
         #endregion
 
         #region Navigation

@@ -29,22 +29,34 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_RepDes));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle37 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle38 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle39 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle40 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btn_BackAll = new System.Windows.Forms.Button();
+            this.btn_ForwardAll = new System.Windows.Forms.Button();
+            this.btn_Back = new System.Windows.Forms.Button();
+            this.btn_Forward = new System.Windows.Forms.Button();
             this.list_Back = new System.Windows.Forms.ListBox();
             this.pnl_FieldsTitle = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.dgv_Conditions = new System.Windows.Forms.DataGridView();
+            this.F = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.not = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ma = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.st = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.logic = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.Group = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Order = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.Delete = new System.Windows.Forms.DataGridViewImageColumn();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.txt_SQL = new System.Windows.Forms.TextBox();
             this.groupBox_Details = new System.Windows.Forms.GroupBox();
@@ -53,7 +65,14 @@
             this.txt_Condition = new System.Windows.Forms.TextBox();
             this.txt_Title = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btn_DeleteRep = new System.Windows.Forms.Button();
+            this.com_SelectedRep = new System.Windows.Forms.ComboBox();
+            this.btn_SaveRep = new System.Windows.Forms.Button();
+            this.txt_RepName = new System.Windows.Forms.TextBox();
+            this.btn_Display = new System.Windows.Forms.Button();
+            this.EXCEL = new System.Windows.Forms.Button();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.button_Print = new System.Windows.Forms.Button();
             this.com_Fields = new System.Windows.Forms.ComboBox();
             this.tab_dis = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -64,30 +83,11 @@
             this.rad_Only = new System.Windows.Forms.RadioButton();
             this.rad_AllRecords = new System.Windows.Forms.RadioButton();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.list_Forward = new System.Windows.Forms.ListBox();
-            this.F = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.not = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ma = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.st = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.logic = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.Group = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Order = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.Delete = new System.Windows.Forms.DataGridViewImageColumn();
-            this.btn_Display = new System.Windows.Forms.Button();
-            this.EXCEL = new System.Windows.Forms.Button();
-            this.button_Print = new System.Windows.Forms.Button();
             this.btn_MoveLast = new System.Windows.Forms.Button();
             this.btn_MoveDowen = new System.Windows.Forms.Button();
             this.btn_MoveUp = new System.Windows.Forms.Button();
             this.btn_MoveFirst = new System.Windows.Forms.Button();
-            this.btn_BackAll = new System.Windows.Forms.Button();
-            this.btn_ForwardAll = new System.Windows.Forms.Button();
-            this.btn_Back = new System.Windows.Forms.Button();
-            this.btn_Forward = new System.Windows.Forms.Button();
-            this.btn_DeleteRep = new System.Windows.Forms.Button();
-            this.com_SelectedRep = new System.Windows.Forms.ComboBox();
-            this.btn_SaveRep = new System.Windows.Forms.Button();
-            this.txt_RepName = new System.Windows.Forms.TextBox();
+            this.list_Forward = new System.Windows.Forms.ListBox();
             this.panel1.SuspendLayout();
             this.pnl_FieldsTitle.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -115,6 +115,58 @@
             this.panel1.Size = new System.Drawing.Size(45, 138);
             this.panel1.TabIndex = 42;
             // 
+            // btn_BackAll
+            // 
+            this.btn_BackAll.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_BackAll.FlatAppearance.BorderSize = 0;
+            this.btn_BackAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_BackAll.Image = ((System.Drawing.Image)(resources.GetObject("btn_BackAll.Image")));
+            this.btn_BackAll.Location = new System.Drawing.Point(0, 105);
+            this.btn_BackAll.Name = "btn_BackAll";
+            this.btn_BackAll.Size = new System.Drawing.Size(45, 35);
+            this.btn_BackAll.TabIndex = 38;
+            this.btn_BackAll.UseVisualStyleBackColor = true;
+            this.btn_BackAll.Click += new System.EventHandler(this.btn_BackAll_Click);
+            // 
+            // btn_ForwardAll
+            // 
+            this.btn_ForwardAll.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_ForwardAll.FlatAppearance.BorderSize = 0;
+            this.btn_ForwardAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_ForwardAll.Image = ((System.Drawing.Image)(resources.GetObject("btn_ForwardAll.Image")));
+            this.btn_ForwardAll.Location = new System.Drawing.Point(0, 70);
+            this.btn_ForwardAll.Name = "btn_ForwardAll";
+            this.btn_ForwardAll.Size = new System.Drawing.Size(45, 35);
+            this.btn_ForwardAll.TabIndex = 39;
+            this.btn_ForwardAll.UseVisualStyleBackColor = true;
+            this.btn_ForwardAll.Click += new System.EventHandler(this.btn_ForwardAll_Click);
+            // 
+            // btn_Back
+            // 
+            this.btn_Back.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_Back.FlatAppearance.BorderSize = 0;
+            this.btn_Back.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Back.Image = ((System.Drawing.Image)(resources.GetObject("btn_Back.Image")));
+            this.btn_Back.Location = new System.Drawing.Point(0, 35);
+            this.btn_Back.Name = "btn_Back";
+            this.btn_Back.Size = new System.Drawing.Size(45, 35);
+            this.btn_Back.TabIndex = 40;
+            this.btn_Back.UseVisualStyleBackColor = true;
+            this.btn_Back.Click += new System.EventHandler(this.btn_Back_Click);
+            // 
+            // btn_Forward
+            // 
+            this.btn_Forward.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_Forward.FlatAppearance.BorderSize = 0;
+            this.btn_Forward.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Forward.Image = ((System.Drawing.Image)(resources.GetObject("btn_Forward.Image")));
+            this.btn_Forward.Location = new System.Drawing.Point(0, 0);
+            this.btn_Forward.Name = "btn_Forward";
+            this.btn_Forward.Size = new System.Drawing.Size(45, 35);
+            this.btn_Forward.TabIndex = 41;
+            this.btn_Forward.UseVisualStyleBackColor = true;
+            this.btn_Forward.Click += new System.EventHandler(this.btn_Forward_Click);
+            // 
             // list_Back
             // 
             this.list_Back.Dock = System.Windows.Forms.DockStyle.Right;
@@ -123,6 +175,7 @@
             this.list_Back.Name = "list_Back";
             this.list_Back.Size = new System.Drawing.Size(150, 138);
             this.list_Back.TabIndex = 0;
+            this.list_Back.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.list_Back_MouseDoubleClick);
             // 
             // pnl_FieldsTitle
             // 
@@ -171,14 +224,14 @@
             this.dgv_Conditions.AllowUserToOrderColumns = true;
             this.dgv_Conditions.AllowUserToResizeColumns = false;
             this.dgv_Conditions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 8F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_Conditions.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle33.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle33.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle33.Font = new System.Drawing.Font("Tahoma", 8F);
+            dataGridViewCellStyle33.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle33.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle33.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle33.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_Conditions.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle33;
             this.dgv_Conditions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_Conditions.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.F,
@@ -193,14 +246,14 @@
             this.dgv_Conditions.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dgv_Conditions.Location = new System.Drawing.Point(-22, 3);
             this.dgv_Conditions.Name = "dgv_Conditions";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 8F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_Conditions.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle35.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle35.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle35.Font = new System.Drawing.Font("Tahoma", 8F);
+            dataGridViewCellStyle35.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle35.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle35.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle35.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_Conditions.RowHeadersDefaultCellStyle = dataGridViewCellStyle35;
             this.dgv_Conditions.Size = new System.Drawing.Size(696, 162);
             this.dgv_Conditions.TabIndex = 0;
             this.dgv_Conditions.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.DGV_1_CellBeginEdit);
@@ -209,6 +262,88 @@
             this.dgv_Conditions.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGV_1_CellValueChanged);
             this.dgv_Conditions.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.DGV_1_EditingControlShowing);
             this.dgv_Conditions.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgv_Conditions_RowsAdded);
+            // 
+            // F
+            // 
+            this.F.DataPropertyName = "Field";
+            this.F.HeaderText = "الحقل";
+            this.F.Name = "F";
+            this.F.Width = 150;
+            // 
+            // not
+            // 
+            this.not.DataPropertyName = "No";
+            this.not.HeaderText = "لا";
+            this.not.Name = "not";
+            this.not.Width = 20;
+            // 
+            // ma
+            // 
+            this.ma.DataPropertyName = "Operator";
+            this.ma.HeaderText = "المعامل";
+            this.ma.Items.AddRange(new object[] {
+            "أختيار",
+            "يبدأ بـ",
+            "مساو لـ",
+            "أكبر من",
+            "أقل من",
+            "أكبر من أو يساوي",
+            "أقل من أو يساوي",
+            "يتضمن"});
+            this.ma.Name = "ma";
+            this.ma.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ma.Width = 120;
+            // 
+            // st
+            // 
+            this.st.DataPropertyName = "Condition";
+            this.st.HeaderText = "الشرط";
+            this.st.Name = "st";
+            this.st.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.st.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.st.Width = 120;
+            // 
+            // logic
+            // 
+            this.logic.DataPropertyName = "Logic";
+            this.logic.HeaderText = "منطقي";
+            this.logic.Items.AddRange(new object[] {
+            "و",
+            "أو"});
+            this.logic.Name = "logic";
+            this.logic.Width = 50;
+            // 
+            // Group
+            // 
+            this.Group.DataPropertyName = "Group";
+            this.Group.HeaderText = "تجميع";
+            this.Group.Name = "Group";
+            this.Group.Width = 50;
+            // 
+            // Order
+            // 
+            this.Order.DataPropertyName = "Order";
+            this.Order.HeaderText = "ترتيب";
+            this.Order.Items.AddRange(new object[] {
+            "",
+            "تصاعدياً",
+            "تنازلياً"});
+            this.Order.Name = "Order";
+            this.Order.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Order.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Order.Width = 80;
+            // 
+            // Delete
+            // 
+            dataGridViewCellStyle34.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle34.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle34.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle34.NullValue = ((object)(resources.GetObject("dataGridViewCellStyle34.NullValue")));
+            this.Delete.DefaultCellStyle = dataGridViewCellStyle34;
+            this.Delete.HeaderText = "حذف";
+            this.Delete.Name = "Delete";
+            this.Delete.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Delete.Width = 40;
             // 
             // tabPage3
             // 
@@ -250,47 +385,47 @@
             // 
             this.DGV.AllowUserToAddRows = false;
             this.DGV.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.OldLace;
-            this.DGV.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle36.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle36.BackColor = System.Drawing.Color.OldLace;
+            this.DGV.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle36;
             this.DGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.DGV.BackgroundColor = System.Drawing.SystemColors.Window;
             this.DGV.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Tahoma", 10F);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle37.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle37.BackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle37.Font = new System.Drawing.Font("Tahoma", 10F);
+            dataGridViewCellStyle37.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle37.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle37.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle37.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle37;
             this.DGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Index});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Tahoma", 8F);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.CadetBlue;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DGV.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle38.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle38.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle38.Font = new System.Drawing.Font("Tahoma", 8F);
+            dataGridViewCellStyle38.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle38.SelectionBackColor = System.Drawing.Color.CadetBlue;
+            dataGridViewCellStyle38.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle38.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DGV.DefaultCellStyle = dataGridViewCellStyle38;
             this.DGV.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DGV.Location = new System.Drawing.Point(3, 66);
             this.DGV.MultiSelect = false;
             this.DGV.Name = "DGV";
             this.DGV.ReadOnly = true;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Tahoma", 8F);
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DGV.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle39.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle39.BackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle39.Font = new System.Drawing.Font("Tahoma", 8F);
+            dataGridViewCellStyle39.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle39.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle39.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle39.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DGV.RowHeadersDefaultCellStyle = dataGridViewCellStyle39;
             this.DGV.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.DGV.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle40.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.DGV.RowsDefaultCellStyle = dataGridViewCellStyle40;
             this.DGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DGV.Size = new System.Drawing.Size(1267, 349);
             this.DGV.TabIndex = 16;
@@ -354,6 +489,85 @@
             this.groupBox1.TabIndex = 59;
             this.groupBox1.TabStop = false;
             // 
+            // btn_DeleteRep
+            // 
+            this.btn_DeleteRep.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_DeleteRep.Image = ((System.Drawing.Image)(resources.GetObject("btn_DeleteRep.Image")));
+            this.btn_DeleteRep.Location = new System.Drawing.Point(433, 160);
+            this.btn_DeleteRep.Name = "btn_DeleteRep";
+            this.btn_DeleteRep.Size = new System.Drawing.Size(144, 34);
+            this.btn_DeleteRep.TabIndex = 20;
+            this.btn_DeleteRep.Text = "حذف التقرير   ";
+            this.btn_DeleteRep.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btn_DeleteRep.UseVisualStyleBackColor = true;
+            this.btn_DeleteRep.Click += new System.EventHandler(this.btn_RepDelete_Click);
+            // 
+            // com_SelectedRep
+            // 
+            this.com_SelectedRep.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.com_SelectedRep.FormattingEnabled = true;
+            this.com_SelectedRep.Location = new System.Drawing.Point(433, 133);
+            this.com_SelectedRep.Name = "com_SelectedRep";
+            this.com_SelectedRep.Size = new System.Drawing.Size(144, 21);
+            this.com_SelectedRep.TabIndex = 19;
+            this.com_SelectedRep.SelectedIndexChanged += new System.EventHandler(this.com_RepGenerator_SelectedIndexChanged);
+            // 
+            // btn_SaveRep
+            // 
+            this.btn_SaveRep.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_SaveRep.Image = ((System.Drawing.Image)(resources.GetObject("btn_SaveRep.Image")));
+            this.btn_SaveRep.Location = new System.Drawing.Point(433, 81);
+            this.btn_SaveRep.Name = "btn_SaveRep";
+            this.btn_SaveRep.Size = new System.Drawing.Size(144, 34);
+            this.btn_SaveRep.TabIndex = 18;
+            this.btn_SaveRep.Text = "حفظ التقرير   ";
+            this.btn_SaveRep.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btn_SaveRep.UseVisualStyleBackColor = true;
+            this.btn_SaveRep.Click += new System.EventHandler(this.btn_SaveRep_Click);
+            // 
+            // txt_RepName
+            // 
+            this.txt_RepName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txt_RepName.Location = new System.Drawing.Point(433, 55);
+            this.txt_RepName.Name = "txt_RepName";
+            this.txt_RepName.Size = new System.Drawing.Size(144, 20);
+            this.txt_RepName.TabIndex = 17;
+            // 
+            // btn_Display
+            // 
+            this.btn_Display.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btn_Display.FlatAppearance.BorderSize = 0;
+            this.btn_Display.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Display.Image = global::WindowsFormsApplication1.Properties.Resources.Display_48__2_;
+            this.btn_Display.Location = new System.Drawing.Point(168, 16);
+            this.btn_Display.Name = "btn_Display";
+            this.btn_Display.Size = new System.Drawing.Size(101, 208);
+            this.btn_Display.TabIndex = 16;
+            this.btn_Display.Text = "عرض";
+            this.btn_Display.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btn_Display.UseVisualStyleBackColor = true;
+            this.btn_Display.Click += new System.EventHandler(this.btn_Display_Click);
+            this.btn_Display.MouseEnter += new System.EventHandler(this.btn_Display_MouseEnter);
+            this.btn_Display.MouseLeave += new System.EventHandler(this.btn_Display_MouseLeave);
+            // 
+            // EXCEL
+            // 
+            this.EXCEL.Dock = System.Windows.Forms.DockStyle.Left;
+            this.EXCEL.FlatAppearance.BorderSize = 0;
+            this.EXCEL.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.EXCEL.ImageKey = "excel_48.png";
+            this.EXCEL.ImageList = this.imageList1;
+            this.EXCEL.Location = new System.Drawing.Point(72, 16);
+            this.EXCEL.Name = "EXCEL";
+            this.EXCEL.Size = new System.Drawing.Size(96, 208);
+            this.EXCEL.TabIndex = 15;
+            this.EXCEL.Text = "تصدير للإكسيل";
+            this.EXCEL.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.EXCEL.UseVisualStyleBackColor = true;
+            this.EXCEL.Click += new System.EventHandler(this.btnExportExcel_Click);
+            this.EXCEL.MouseEnter += new System.EventHandler(this.EXCEL_MouseEnter);
+            this.EXCEL.MouseLeave += new System.EventHandler(this.EXCEL_MouseLeave);
+            // 
             // imageList1
             // 
             this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
@@ -373,16 +587,31 @@
             this.imageList1.Images.SetKeyName(12, "Display3.png");
             this.imageList1.Images.SetKeyName(13, "excel_48.png");
             // 
+            // button_Print
+            // 
+            this.button_Print.Dock = System.Windows.Forms.DockStyle.Left;
+            this.button_Print.FlatAppearance.BorderSize = 0;
+            this.button_Print.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_Print.ImageKey = "Print";
+            this.button_Print.ImageList = this.imageList1;
+            this.button_Print.Location = new System.Drawing.Point(3, 16);
+            this.button_Print.Name = "button_Print";
+            this.button_Print.Size = new System.Drawing.Size(69, 208);
+            this.button_Print.TabIndex = 14;
+            this.button_Print.Text = "طباعة";
+            this.button_Print.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.button_Print.UseVisualStyleBackColor = true;
+            this.button_Print.Visible = false;
+            // 
             // com_Fields
             // 
             this.com_Fields.DisplayMember = "Column_Name";
             this.com_Fields.FormattingEnabled = true;
             this.com_Fields.Location = new System.Drawing.Point(296, 192);
             this.com_Fields.Name = "com_Fields";
-            this.com_Fields.Size = new System.Drawing.Size(77, 21);
+            this.com_Fields.Size = new System.Drawing.Size(131, 21);
             this.com_Fields.TabIndex = 8;
             this.com_Fields.ValueMember = "Data_Type";
-            this.com_Fields.Visible = false;
             // 
             // tab_dis
             // 
@@ -521,148 +750,6 @@
             this.panel2.Size = new System.Drawing.Size(45, 138);
             this.panel2.TabIndex = 44;
             // 
-            // list_Forward
-            // 
-            this.list_Forward.Dock = System.Windows.Forms.DockStyle.Right;
-            this.list_Forward.FormattingEnabled = true;
-            this.list_Forward.Location = new System.Drawing.Point(329, 27);
-            this.list_Forward.Name = "list_Forward";
-            this.list_Forward.Size = new System.Drawing.Size(150, 138);
-            this.list_Forward.TabIndex = 43;
-            // 
-            // F
-            // 
-            this.F.DataPropertyName = "Field";
-            this.F.HeaderText = "الحقل";
-            this.F.Name = "F";
-            this.F.Width = 150;
-            // 
-            // not
-            // 
-            this.not.DataPropertyName = "No";
-            this.not.HeaderText = "لا";
-            this.not.Name = "not";
-            this.not.Width = 20;
-            // 
-            // ma
-            // 
-            this.ma.DataPropertyName = "Operator";
-            this.ma.HeaderText = "المعامل";
-            this.ma.Items.AddRange(new object[] {
-            "أختيار",
-            "يبدأ بـ",
-            "مساو لـ",
-            "أكبر من",
-            "أقل من",
-            "أكبر من أو يساوي",
-            "أقل من أو يساوي",
-            "يتضمن"});
-            this.ma.Name = "ma";
-            this.ma.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ma.Width = 120;
-            // 
-            // st
-            // 
-            this.st.DataPropertyName = "Condition";
-            this.st.HeaderText = "الشرط";
-            this.st.Name = "st";
-            this.st.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.st.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.st.Width = 120;
-            // 
-            // logic
-            // 
-            this.logic.DataPropertyName = "Logic";
-            this.logic.HeaderText = "منطقي";
-            this.logic.Items.AddRange(new object[] {
-            "و",
-            "أو"});
-            this.logic.Name = "logic";
-            this.logic.Width = 50;
-            // 
-            // Group
-            // 
-            this.Group.DataPropertyName = "Group";
-            this.Group.HeaderText = "تجميع";
-            this.Group.Name = "Group";
-            this.Group.Width = 50;
-            // 
-            // Order
-            // 
-            this.Order.DataPropertyName = "Order";
-            this.Order.HeaderText = "ترتيب";
-            this.Order.Items.AddRange(new object[] {
-            "",
-            "تصاعدياً",
-            "تنازلياً"});
-            this.Order.Name = "Order";
-            this.Order.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Order.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Order.Width = 80;
-            // 
-            // Delete
-            // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle2.NullValue = ((object)(resources.GetObject("dataGridViewCellStyle2.NullValue")));
-            this.Delete.DefaultCellStyle = dataGridViewCellStyle2;
-            this.Delete.HeaderText = "حذف";
-            this.Delete.Name = "Delete";
-            this.Delete.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Delete.Width = 40;
-            // 
-            // btn_Display
-            // 
-            this.btn_Display.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btn_Display.FlatAppearance.BorderSize = 0;
-            this.btn_Display.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Display.Image = global::WindowsFormsApplication1.Properties.Resources.Display_48__2_;
-            this.btn_Display.Location = new System.Drawing.Point(168, 16);
-            this.btn_Display.Name = "btn_Display";
-            this.btn_Display.Size = new System.Drawing.Size(101, 208);
-            this.btn_Display.TabIndex = 16;
-            this.btn_Display.Text = "عرض";
-            this.btn_Display.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btn_Display.UseVisualStyleBackColor = true;
-            this.btn_Display.Click += new System.EventHandler(this.btn_Display_Click);
-            this.btn_Display.MouseEnter += new System.EventHandler(this.btn_Display_MouseEnter);
-            this.btn_Display.MouseLeave += new System.EventHandler(this.btn_Display_MouseLeave);
-            // 
-            // EXCEL
-            // 
-            this.EXCEL.Dock = System.Windows.Forms.DockStyle.Left;
-            this.EXCEL.FlatAppearance.BorderSize = 0;
-            this.EXCEL.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.EXCEL.ImageKey = "excel_48.png";
-            this.EXCEL.ImageList = this.imageList1;
-            this.EXCEL.Location = new System.Drawing.Point(72, 16);
-            this.EXCEL.Name = "EXCEL";
-            this.EXCEL.Size = new System.Drawing.Size(96, 208);
-            this.EXCEL.TabIndex = 15;
-            this.EXCEL.Text = "تصدير للإكسيل";
-            this.EXCEL.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.EXCEL.UseVisualStyleBackColor = true;
-            this.EXCEL.Click += new System.EventHandler(this.btnExportExcel_Click);
-            this.EXCEL.MouseEnter += new System.EventHandler(this.EXCEL_MouseEnter);
-            this.EXCEL.MouseLeave += new System.EventHandler(this.EXCEL_MouseLeave);
-            // 
-            // button_Print
-            // 
-            this.button_Print.Dock = System.Windows.Forms.DockStyle.Left;
-            this.button_Print.FlatAppearance.BorderSize = 0;
-            this.button_Print.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_Print.ImageKey = "Print";
-            this.button_Print.ImageList = this.imageList1;
-            this.button_Print.Location = new System.Drawing.Point(3, 16);
-            this.button_Print.Name = "button_Print";
-            this.button_Print.Size = new System.Drawing.Size(69, 208);
-            this.button_Print.TabIndex = 14;
-            this.button_Print.Text = "طباعة";
-            this.button_Print.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.button_Print.UseVisualStyleBackColor = true;
-            this.button_Print.Visible = false;
-            // 
             // btn_MoveLast
             // 
             this.btn_MoveLast.Dock = System.Windows.Forms.DockStyle.Top;
@@ -715,101 +802,15 @@
             this.btn_MoveFirst.UseVisualStyleBackColor = true;
             this.btn_MoveFirst.Click += new System.EventHandler(this.btn_MoveFirst_Click);
             // 
-            // btn_BackAll
+            // list_Forward
             // 
-            this.btn_BackAll.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_BackAll.FlatAppearance.BorderSize = 0;
-            this.btn_BackAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_BackAll.Image = ((System.Drawing.Image)(resources.GetObject("btn_BackAll.Image")));
-            this.btn_BackAll.Location = new System.Drawing.Point(0, 105);
-            this.btn_BackAll.Name = "btn_BackAll";
-            this.btn_BackAll.Size = new System.Drawing.Size(45, 35);
-            this.btn_BackAll.TabIndex = 38;
-            this.btn_BackAll.UseVisualStyleBackColor = true;
-            this.btn_BackAll.Click += new System.EventHandler(this.btn_BackAll_Click);
-            // 
-            // btn_ForwardAll
-            // 
-            this.btn_ForwardAll.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_ForwardAll.FlatAppearance.BorderSize = 0;
-            this.btn_ForwardAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_ForwardAll.Image = ((System.Drawing.Image)(resources.GetObject("btn_ForwardAll.Image")));
-            this.btn_ForwardAll.Location = new System.Drawing.Point(0, 70);
-            this.btn_ForwardAll.Name = "btn_ForwardAll";
-            this.btn_ForwardAll.Size = new System.Drawing.Size(45, 35);
-            this.btn_ForwardAll.TabIndex = 39;
-            this.btn_ForwardAll.UseVisualStyleBackColor = true;
-            this.btn_ForwardAll.Click += new System.EventHandler(this.btn_ForwardAll_Click);
-            // 
-            // btn_Back
-            // 
-            this.btn_Back.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_Back.FlatAppearance.BorderSize = 0;
-            this.btn_Back.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Back.Image = ((System.Drawing.Image)(resources.GetObject("btn_Back.Image")));
-            this.btn_Back.Location = new System.Drawing.Point(0, 35);
-            this.btn_Back.Name = "btn_Back";
-            this.btn_Back.Size = new System.Drawing.Size(45, 35);
-            this.btn_Back.TabIndex = 40;
-            this.btn_Back.UseVisualStyleBackColor = true;
-            this.btn_Back.Click += new System.EventHandler(this.btn_Back_Click);
-            // 
-            // btn_Forward
-            // 
-            this.btn_Forward.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_Forward.FlatAppearance.BorderSize = 0;
-            this.btn_Forward.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Forward.Image = ((System.Drawing.Image)(resources.GetObject("btn_Forward.Image")));
-            this.btn_Forward.Location = new System.Drawing.Point(0, 0);
-            this.btn_Forward.Name = "btn_Forward";
-            this.btn_Forward.Size = new System.Drawing.Size(45, 35);
-            this.btn_Forward.TabIndex = 41;
-            this.btn_Forward.UseVisualStyleBackColor = true;
-            this.btn_Forward.Click += new System.EventHandler(this.btn_Forward_Click);
-            // 
-            // btn_DeleteRep
-            // 
-            this.btn_DeleteRep.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_DeleteRep.Image = ((System.Drawing.Image)(resources.GetObject("btn_DeleteRep.Image")));
-            this.btn_DeleteRep.Location = new System.Drawing.Point(433, 160);
-            this.btn_DeleteRep.Name = "btn_DeleteRep";
-            this.btn_DeleteRep.Size = new System.Drawing.Size(144, 34);
-            this.btn_DeleteRep.TabIndex = 20;
-            this.btn_DeleteRep.Text = "حذف التقرير   ";
-            this.btn_DeleteRep.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.btn_DeleteRep.UseVisualStyleBackColor = true;
-            this.btn_DeleteRep.Click += new System.EventHandler(this.btn_RepDelete_Click);
-            // 
-            // com_SelectedRep
-            // 
-            this.com_SelectedRep.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.com_SelectedRep.FormattingEnabled = true;
-            this.com_SelectedRep.Location = new System.Drawing.Point(433, 133);
-            this.com_SelectedRep.Name = "com_SelectedRep";
-            this.com_SelectedRep.Size = new System.Drawing.Size(144, 21);
-            this.com_SelectedRep.TabIndex = 19;
-            this.com_SelectedRep.SelectedIndexChanged += new System.EventHandler(this.com_RepGenerator_SelectedIndexChanged);
-            // 
-            // btn_SaveRep
-            // 
-            this.btn_SaveRep.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_SaveRep.Image = ((System.Drawing.Image)(resources.GetObject("btn_SaveRep.Image")));
-            this.btn_SaveRep.Location = new System.Drawing.Point(433, 81);
-            this.btn_SaveRep.Name = "btn_SaveRep";
-            this.btn_SaveRep.Size = new System.Drawing.Size(144, 34);
-            this.btn_SaveRep.TabIndex = 18;
-            this.btn_SaveRep.Text = "حفظ التقرير   ";
-            this.btn_SaveRep.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.btn_SaveRep.UseVisualStyleBackColor = true;
-            this.btn_SaveRep.Click += new System.EventHandler(this.btn_SaveRep_Click);
-            // 
-            // txt_RepName
-            // 
-            this.txt_RepName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txt_RepName.Location = new System.Drawing.Point(433, 55);
-            this.txt_RepName.Name = "txt_RepName";
-            this.txt_RepName.Size = new System.Drawing.Size(144, 20);
-            this.txt_RepName.TabIndex = 17;
+            this.list_Forward.Dock = System.Windows.Forms.DockStyle.Right;
+            this.list_Forward.FormattingEnabled = true;
+            this.list_Forward.Location = new System.Drawing.Point(329, 27);
+            this.list_Forward.Name = "list_Forward";
+            this.list_Forward.Size = new System.Drawing.Size(150, 138);
+            this.list_Forward.TabIndex = 43;
+            this.list_Forward.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.list_Forward_MouseDoubleClick);
             // 
             // frm_RepDes
             // 

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txt_Quan = new System.Windows.Forms.TextBox();
             this.grbx_Controls = new System.Windows.Forms.GroupBox();
             this.btn_Save = new System.Windows.Forms.Button();
@@ -75,6 +75,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.dtp_Date = new System.Windows.Forms.DateTimePicker();
+            this.txt_SearchItem = new System.Windows.Forms.TextBox();
             this.grbx_Controls.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.groupBox_Footer_Controls.SuspendLayout();
@@ -225,14 +226,14 @@
             this.dgv.AllowUserToResizeColumns = false;
             this.dgv.AllowUserToResizeRows = false;
             this.dgv.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Gainsboro;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 8F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Gainsboro;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Tahoma", 8F);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgv.ColumnHeadersHeight = 25;
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgv.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -476,6 +477,7 @@
             // 
             // grpx_Head
             // 
+            this.grpx_Head.Controls.Add(this.txt_SearchItem);
             this.grpx_Head.Controls.Add(this.btn_dgvrowdel);
             this.grpx_Head.Controls.Add(this.btn_CancelAll);
             this.grpx_Head.Controls.Add(this.btn_Cat_Del);
@@ -724,6 +726,23 @@
             this.dtp_Date.TabStop = false;
             this.dtp_Date.ValueChanged += new System.EventHandler(this.dtp_Date_ValueChanged);
             // 
+            // txt_SearchItem
+            // 
+            this.txt_SearchItem.BackColor = System.Drawing.SystemColors.Control;
+            this.txt_SearchItem.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txt_SearchItem.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.txt_SearchItem.Location = new System.Drawing.Point(35, 93);
+            this.txt_SearchItem.Name = "txt_SearchItem";
+            this.txt_SearchItem.Size = new System.Drawing.Size(90, 13);
+            this.txt_SearchItem.TabIndex = 185;
+            this.txt_SearchItem.Text = "Search";
+            this.txt_SearchItem.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txt_SearchItem.Enter += new System.EventHandler(this.txt_SearchItem_Enter);
+            this.txt_SearchItem.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_SearchItem_KeyPress);
+            this.txt_SearchItem.Leave += new System.EventHandler(this.txt_SearchItem_Leave);
+            this.txt_SearchItem.MouseEnter += new System.EventHandler(this.txt_SearchItem_MouseEnter);
+            this.txt_SearchItem.MouseLeave += new System.EventHandler(this.txt_SearchItem_MouseLeave);
+            // 
             // frm_StoreWithdraw
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -801,5 +820,6 @@
         private System.Windows.Forms.Button btn_CancelAll;
         private System.Windows.Forms.Button btn_SelectAll;
         private System.Windows.Forms.Button btn_dgvrowdel;
+        public System.Windows.Forms.TextBox txt_SearchItem;
     }
 }

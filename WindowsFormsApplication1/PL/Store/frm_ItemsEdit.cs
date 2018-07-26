@@ -1,37 +1,36 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WindowsFormsApplication1.PL.Pur
+namespace WindowsFormsApplication1.PL.Store
 {
-    public partial class frm_Pur2 : Form
+    public partial class frm_ItemsEdit : Form
     {
-        #region Declarations
         BL.BL.G g = new BL.BL.G();
-        PL.G.frm_Search search = new G.frm_Search();
-        PL.Pur.frm_PurAdd add = new PL.Pur.frm_PurAdd();
+        PL.Store.frm_ItemsEditAdd add = new frm_ItemsEditAdd();
         BL.BL.Units units = new BL.BL.Units();
 
         DataTable Temp_dgv = new DataTable();
-        BL.BL.Ven ven = new BL.BL.Ven();
-        BL.BL.Pur pur = new BL.BL.Pur();
+        BL.BL.ItemsEdit ItemsEdit = new BL.BL.ItemsEdit();
         DataTable dt_Units = new DataTable();
-        DataSet st = new DataSet();
+        DataSet st_Open = new DataSet();
         public int UserID;
         public PL.G.frm_Main frm_Main;
-        #endregion
 
-        public frm_Pur2()
+        public frm_ItemsEdit()
         {
             InitializeComponent();
 
             dgv.AutoGenerateColumns = false;
             dt_Units = units.Select();
-            com_PayType.DataSource = g.Select("DocPayTypes");
-            com_Ven.DataSource = ven.Select();
-
-            Form_Mode("Empty");
+            dgv.DataSource = ItemsEdit.Select();
+            com_User.DataSource = g.Select("Users");
 
             #region dgv Fildes
             var Item_ID = new DataGridViewTextBoxColumn();
@@ -70,14 +69,14 @@ namespace WindowsFormsApplication1.PL.Pur
             Item_Quan.Visible = true;
             dgv.Columns.Add(Item_Quan);
 
-            var PPrice = new DataGridViewTextBoxColumn();
-            PPrice.Name = "PPrice";
-            PPrice.HeaderText = "سعر الشراء";
-            PPrice.DataPropertyName = "PPrice";
-            PPrice.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            PPrice.Width = 100;
-            PPrice.Visible = true;
-            dgv.Columns.Add(PPrice);
+            var CPrice = new DataGridViewTextBoxColumn();
+            CPrice.Name = "CPrice";
+            CPrice.HeaderText = "سعر التكلفة";
+            CPrice.DataPropertyName = "CPrice";
+            CPrice.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            CPrice.Width = 100;
+            CPrice.Visible = true;
+            dgv.Columns.Add(CPrice);
 
             var Items_Total = new DataGridViewTextBoxColumn();
             Items_Total.Name = "Total";
@@ -99,11 +98,11 @@ namespace WindowsFormsApplication1.PL.Pur
             dgv.CurrentRow.Cells["Name"].Value = add.com_Item_Name.Text;
             dgv.CurrentRow.Cells["Unit"].Value = add.UnitID;
             dgv.CurrentRow.Cells["Quan"].Value = add.txt_Quan.Text;
-            dgv.CurrentRow.Cells["PPrice"].Value = add.txt_PPrice.Text;
-            dgv.CurrentRow.Cells["Total"].Value = Math.Round(Convert.ToDecimal(add.txt_Quan.Text) * Convert.ToDecimal(add.txt_PPrice.Text), 2).ToString();
+            dgv.CurrentRow.Cells["CPrice"].Value = add.txt_CPrice.Text;
+            dgv.CurrentRow.Cells["Total"].Value = Math.Round(Convert.ToDecimal(add.txt_Quan.Text) * Convert.ToDecimal(add.txt_CPrice.Text), 2).ToString();
             Console.Beep();
-            decimal pp = Math.Round(Convert.ToDecimal((txt_TotalPPrice.Text == "") ? "0" : txt_TotalPPrice.Text), 2) + Convert.ToDecimal(dgv.CurrentRow.Cells["Total"].Value);
-            txt_TotalPPrice.Text = pp.ToString();
+            decimal pp = Math.Round(Convert.ToDecimal((txt_TotalCost.Text == "") ? "0" : txt_TotalCost.Text), 2) + Convert.ToDecimal(dgv.CurrentRow.Cells["Total"].Value);
+            txt_TotalCost.Text = pp.ToString();
         }
         private DataTable table(int t)
         {
@@ -125,21 +124,16 @@ namespace WindowsFormsApplication1.PL.Pur
             }
             return dt;
         }
-        void calc_Total()
+        string calc_Total()
         {
             decimal t = 0;
-            if (txt_DisVal.Text.Trim() == "") txt_DisVal.Text = "0";
-
-            decimal d = Convert.ToDecimal(txt_DisVal.Text);
             foreach (DataGridViewRow r in dgv.Rows)
             {
                 t += Convert.ToDecimal(r.Cells["Total"].Value);
             }
-            txt_TotalPPrice.Text = t.ToString();
-            txt_Net.Text = (t - d).ToString();
-
+            return t.ToString();
         }
-        private DataTable IO()
+        private DataTable table()
         {
             DataTable dt = new DataTable();
             foreach (DataGridViewColumn col in dgv.Columns)
@@ -175,10 +169,6 @@ namespace WindowsFormsApplication1.PL.Pur
             {
                 #region Select
                 case "Select":
-
-                    st = pur.Select();
-                    if (st.Tables[0].Rows.Count == 0) return;
-
                     Tag = "Select";
 
                     btn_New.Visible = true;
@@ -186,47 +176,37 @@ namespace WindowsFormsApplication1.PL.Pur
                     btn_Save.Visible = false;
                     btn_Delete.Visible = true;
                     btn_Cancel.Visible = false;
-                
+
                     txt_Date.ReadOnly = true;
                     dtp_Date.Enabled = false;
-                    txt_VenDocID.ReadOnly = true;
                     txt_Notes.ReadOnly = true;
                     grbx_Add.Visible = false;
-                    com_PayType.Enabled = false;
-                    com_Ven.Enabled = false;
-                    btn_Ven_Search.Visible = false;
-                    btn_Ven_Edit.Visible = false;
-                    btn_Ven_Del.Visible = false;
-                    txt_DisVal.ReadOnly = true;
 
-                    txt_ID.Text = st.Tables[0].Rows[0]["ID"].ToString();
-                    btn_JorID.Text = st.Tables[0].Rows[0]["JorID"].ToString();
-                    txt_Date.Text = Convert.ToDateTime(st.Tables[0].Rows[0]["Date"]).ToString("dd/MM/yyyy");
-                    com_PayType.SelectedValue = st.Tables[0].Rows[0]["PayTypeID"].ToString();
-                    com_Ven.SelectedValue = st.Tables[0].Rows[0]["VenID"].ToString();
-                    txt_VenDocID.Text = st.Tables[0].Rows[0]["VenDocID"].ToString();
-                    txt_Notes.Text = st.Tables[0].Rows[0]["Notes"].ToString();
-                    com_User.SelectedValue = st.Tables[0].Rows[0]["UserID"];
-                    txt_DisVal.Text = st.Tables[0].Rows[0]["DisVal"].ToString();
+                    st_Open = ItemsEdit.Select();
+                    if (st_Open.Tables[0].Rows.Count > 0)
+                    {
+                        txt_ID.Text = st_Open.Tables[0].Rows[0]["ID"].ToString();
+                        txt_Date.Text = Convert.ToDateTime(st_Open.Tables[0].Rows[0]["Date"]).ToString("dd/MM/yyyy");
+                        txt_Notes.Text = st_Open.Tables[0].Rows[0]["Notes"].ToString();
+                        com_User.SelectedValue = st_Open.Tables[0].Rows[0]["UserID"];
 
+                        dgv.DataSource = st_Open.Tables[1];
+                        txt_TotalCost.Text = calc_Total();
 
-                    dgv.DataSource = st.Tables[1];
-                    calc_Total();
+                        dgv.AllowUserToDeleteRows = false;
 
-                    dgv.AllowUserToDeleteRows = false;
+                        txt_TotalCost.ReadOnly = true;
 
-                    txt_TotalPPrice.ReadOnly = true;
+                        if (dgv.SelectedRows.Count > 0) { dgv.SelectedRows[0].Selected = false; }
 
-                    if (dgv.SelectedRows.Count > 0) { dgv.SelectedRows[0].Selected = false; }
-
-                    EmptyZero();
+                        EmptyZero();
+                    }
 
                     break;
                 #endregion
 
                 #region New
                 case "New":
-
                     Tag = "New";
 
                     btn_New.Visible = false;
@@ -237,32 +217,19 @@ namespace WindowsFormsApplication1.PL.Pur
 
                     txt_Date.ReadOnly = false;
                     dtp_Date.Enabled = true;
-                    txt_VenDocID.ReadOnly = false;
                     txt_Notes.ReadOnly = false;
-                    com_PayType.Enabled = true;
-                    com_Ven.Enabled = true;
-                    btn_Ven_Search.Visible = true;
-                    btn_Ven_Edit.Visible = true;
-                    btn_Ven_Del.Visible = true;
                     grbx_Add.Visible = true;
-                    txt_DisVal.ReadOnly = false;
 
                     txt_ID.Text = "";
-                    btn_JorID.Text = "";
                     txt_Date.Text = DateTime.Today.ToString("dd/MM/yyyy");
-                    com_PayType.SelectedIndex = 0;
-                    com_Ven.SelectedValue = -1;
-                    txt_VenDocID.Text = "";
                     txt_Notes.Text = "";
-                    txt_TotalPPrice.Text = "";
-                    txt_DisVal.Text = "";
-                    txt_Net.Text = "";
+                    com_User.SelectedValue = UserID;
+                    txt_TotalCost.Text = "";
                     txt_Notes.Focus();
 
                     dgv.DataSource = null;
                     dgv.Rows.Clear();
                     dgv.AllowUserToDeleteRows = true;
-
                     break;
                 #endregion
 
@@ -278,15 +245,8 @@ namespace WindowsFormsApplication1.PL.Pur
 
                     txt_Date.ReadOnly = false;
                     dtp_Date.Enabled = true;
-                    txt_VenDocID.ReadOnly = false;
                     txt_Notes.ReadOnly = false;
                     grbx_Add.Visible = true;
-                    com_PayType.Enabled = true;
-                    com_Ven.Enabled = true;
-                    btn_Ven_Search.Visible = true;
-                    btn_Ven_Edit.Visible = true;
-                    btn_Ven_Del.Visible = true;
-                    txt_DisVal.ReadOnly = false;
 
                     dgv.DataSource = null;
                     dgv.Rows.Clear();
@@ -297,7 +257,6 @@ namespace WindowsFormsApplication1.PL.Pur
 
                 #region Empty
                 case "Empty":
-
                     Tag = "Empty";
                     btn_New.Visible = true;
                     btn_Edit.Visible = false;
@@ -307,49 +266,28 @@ namespace WindowsFormsApplication1.PL.Pur
 
                     txt_Date.ReadOnly = true;
                     dtp_Date.Enabled = false;
-                    txt_VenDocID.ReadOnly = true;
                     txt_Notes.ReadOnly = true;
+                    com_User.SelectedValue = -1;
                     grbx_Add.Visible = false;
-                    com_PayType.Enabled = false;
-                    com_Ven.Enabled = false;
-                    btn_Ven_Search.Visible = false;
-                    btn_Ven_Edit.Visible = false;
-                    btn_Ven_Del.Visible = false;
-                    txt_DisVal.ReadOnly = true;
 
                     dgv.DataSource = null;
 
-                    com_PayType.SelectedValue = -1;
-                    com_Ven.SelectedValue = -1;
                     txt_ID.Text = "";
-                    btn_JorID.Text = "";
                     txt_Date.Text = "";
-                    txt_VenDocID.Text = "";
                     txt_Notes.Text = "";
-                    txt_TotalPPrice.Text = "";
-                    txt_DisVal.Text = "";
-                    txt_Net.Text = "";
-
+                    txt_TotalCost.Text = "";
                     break;
-
                     #endregion
             }
         }
 
         void var()
         {
-            pur.ID = (txt_ID.Text == "") ? "" : txt_ID.Text;
-            //pur.Date = Convert.ToDateTime(txt_Date.Text.Trim());
-            pur.Date = DateTime.ParseExact(txt_Date.Text.Trim(), "dd/MM/yyyy", null);
-            pur.PayTypeID = Convert.ToInt32(com_PayType.SelectedValue);
-            pur.VenID = (com_Ven.SelectedValue != null) ? com_Ven.SelectedValue.ToString() : null;
-            pur.VenDocID = txt_VenDocID.Text;
-            pur.Notes = txt_Notes.Text;
-            pur.TotalPPrice = (txt_TotalPPrice.Text != "") ? Convert.ToDecimal(txt_TotalPPrice.Text) : 0;
-            pur.DisVal = (txt_DisVal.Text.Trim() != "") ? Convert.ToDecimal(txt_DisVal.Text.Trim()) : 0;
-            pur.Net = (txt_Net.Text != "") ? Convert.ToDecimal(txt_Net.Text) : 0;
-            pur.UserID = UserID;
-            pur.IO = IO();
+            ItemsEdit.ID = (txt_ID.Text == "") ? 0 : Convert.ToInt32(txt_ID.Text);
+            ItemsEdit.Date = DateTime.ParseExact(txt_Date.Text.Trim(), "dd/MM/yyyy", null);
+            ItemsEdit.Notes = txt_Notes.Text;
+            ItemsEdit.UserID = UserID;
+            ItemsEdit.IO = table();
         }
         void EmptyZero()
         {
@@ -369,16 +307,7 @@ namespace WindowsFormsApplication1.PL.Pur
         #region Form
         private void frm_OpenStock_Shown(object sender, EventArgs e)
         {
-            if (txt_ID.Text != "")
-            {
-                pur.ID = txt_ID.Text;
-                pur.nav = -1;
-                Form_Mode("Select");
-            }
-            else
-            {
-                Form_Mode("Empty");
-            }
+            Form_Mode("Empty");
         }
         #endregion
 
@@ -447,7 +376,7 @@ namespace WindowsFormsApplication1.PL.Pur
                     int x = Convert.ToInt32(row["Unit"]);
                     dgv.CurrentRow.Cells["Unit"].Value = x;
                     dgv.CurrentRow.Cells["Quan"].Value = row["Quan"].ToString();
-                    dgv.CurrentRow.Cells["PPrice"].Value = row["PPrice"].ToString();
+                    dgv.CurrentRow.Cells["CPrice"].Value = row["CPrice"].ToString();
                     dgv.CurrentRow.Cells["Total"].Value = row["Total"].ToString();
                 }
 
@@ -455,18 +384,12 @@ namespace WindowsFormsApplication1.PL.Pur
         }
         private void btn_Save_Click(object sender, EventArgs e)
         {
-            #region Validations
+            #region Validation
             if (txt_Date.Text.Trim() == "")
             {
                 MessageBox.Show("يجب إدخال التاريخ");
                 dtp_Date.Select();
                 SendKeys.Send("%{DOWN}");
-                return;
-            }
-            if (com_PayType.SelectedIndex == 1 && com_Ven.SelectedValue == null)
-            {
-                MessageBox.Show("يجب أختيار مورد قبل حفظ الفاتورة الآجلة");
-                com_Ven.DroppedDown = true;
                 return;
             }
             if (dgv.RowCount == 0)
@@ -477,24 +400,13 @@ namespace WindowsFormsApplication1.PL.Pur
             }
             #endregion
 
-            calc_Total();
-
             var();
 
             #region New
             if (Tag.ToString() == "New")
             {
-                string t = pur.Insert();
-                if (t.Length > 2)
-                {
-                    if (t.Substring(0, 3) == "SQL")
-                    {
-                        MessageBox.Show(t);
-                        return;
-                    }
-                }
-                pur.ID = t;
-                pur.nav = -1;
+                ItemsEdit.ID = Convert.ToInt32(ItemsEdit.Insert());
+                ItemsEdit.nav = -1;
                 Form_Mode("Select");
             }
             #endregion
@@ -502,40 +414,21 @@ namespace WindowsFormsApplication1.PL.Pur
             #region Edit
             else if (Tag.ToString() == "Edit")
             {
-                string t = pur.Update();
-                if (t.Length > 2)
-                {
-                    if (t.Substring(0, 3) == "SQL")
-                    {
-                        MessageBox.Show(t);
-                        return;
-                    }
-                }
-                pur.ID = t;
-                pur.nav = -1;
+                ItemsEdit.ID = Convert.ToInt32(ItemsEdit.Update());
+                ItemsEdit.nav = -1;
                 Form_Mode("Select");
             }
             #endregion
-
-            frm_Main.FillChart();
         }
         private void btn_Delete_Click(object sender, EventArgs e)
         {
+
             if (DialogResult.Yes == MessageBox.Show("هل تريد بالفعل حذف السند ؟", "تأكيد الحذف", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
             {
-                pur.ID = txt_ID.Text;
-                string t = pur.Delete();
-                if (t.Length > 2)
-                {
-                    if (t.Substring(0, 3) == "SQL")
-                    {
-                        MessageBox.Show(t);
-                        return;
-                    }
-                }
-                Form_Mode("Empty");
-                frm_Main.FillChart();
+                ItemsEdit.ID = Convert.ToInt32(txt_ID.Text);
+                string t = ItemsEdit.Delete();
             }
+            Form_Mode("Empty");
         }
         private void btn_Cancel_Click(object sender, EventArgs e)
         {
@@ -548,28 +441,20 @@ namespace WindowsFormsApplication1.PL.Pur
                 Form_Mode("Select");
             }
         }
-
         #endregion
 
         #region Details
-        private void btn_JorID_Click(object sender, EventArgs e)
-        {
-            if (btn_JorID.Text == "") return;
-            PL.ACC.frm_Jor jor = new ACC.frm_Jor();
-            jor.txt_ID.Text = btn_JorID.Text;
-            jor.Show();
-        }
         private void btn_Add_Click(object sender, EventArgs e)
         {
             add.dgv = dgv;
-            add.txt_TotalPPrice = txt_TotalPPrice;
+            add.txt_TotalCost = txt_TotalCost;
 
             add.Text = "إضافة";
             add.btn_Add.Text = "+ إضافة";
 
             add.com_Item_Name.SelectedValue = -1;
             add.txt_Quan.Text = "";
-            add.txt_PPrice.Text = "";
+            add.txt_CPrice.Text = "";
 
             add.Location = new Point(Location.X + ((Width / 2) - add.Width / 2), Location.Y + 120);
             add.ShowDialog();
@@ -577,33 +462,6 @@ namespace WindowsFormsApplication1.PL.Pur
         private void dtp_BirthDate_ValueChanged(object sender, EventArgs e)
         {
             txt_Date.Text = dtp_Date.Value.ToString("dd/MM/yyyy");
-        }
-        private void btn_Ven_Search_Click(object sender, EventArgs e)
-        {
-            search.Text = "بحث عن مورد";
-
-            search.dt = (DataTable)com_Ven.DataSource;
-
-            search.dgv.Columns[0].DataPropertyName = "ID";
-            search.dgv.Columns[1].DataPropertyName = "Name";
-
-            search.dgv.AutoGenerateColumns = false;
-            search.dgv.DataSource = search.dt;
-            search.ShowDialog();
-
-            com_Ven.Text = search.txt;
-        }
-        private void btn_Ven_Edit_Click(object sender, EventArgs e)
-        {
-            PL.Pur.frm_Ven v = new PL.Pur.frm_Ven();
-            v.FormBorderStyle = FormBorderStyle.Sizable;
-            v.ShowDialog();
-            com_Ven.DataSource = ven.Select();
-            com_Ven.SelectedValue = v.txt_ID.Text;
-        }
-        private void btn_Ven_Del_Click(object sender, EventArgs e)
-        {
-            com_Ven.SelectedValue = -1;
         }
         #endregion
 
@@ -614,7 +472,7 @@ namespace WindowsFormsApplication1.PL.Pur
 
             add.edit = true;
             add.dgv = dgv;
-            add.txt_TotalPPrice = txt_TotalPPrice;
+            add.txt_TotalCost = txt_TotalCost;
 
             add.Text = "تعديل";
             add.btn_Add.Text = "تعديل";
@@ -622,7 +480,7 @@ namespace WindowsFormsApplication1.PL.Pur
             add.rowindex = e.RowIndex;
             add.com_Item_Name.SelectedValue = dgv.Rows[e.RowIndex].Cells["ID"].Value;
             add.txt_Quan.Text = dgv.Rows[e.RowIndex].Cells["Quan"].Value.ToString();
-            add.txt_PPrice.Text = dgv.Rows[e.RowIndex].Cells["PPrice"].Value.ToString();
+            add.txt_CPrice.Text = dgv.Rows[e.RowIndex].Cells["CPrice"].Value.ToString();
 
             add.Location = new Point(Location.X + ((Width / 2) - add.Width / 2), Location.Y + 120);
             add.ShowDialog();
@@ -631,6 +489,8 @@ namespace WindowsFormsApplication1.PL.Pur
         #endregion
 
         #region Navigation
+        int n;
+        bool nav;
         #region display
         private void button_First_MouseEnter(object sender, EventArgs e)
         {
@@ -694,24 +554,24 @@ namespace WindowsFormsApplication1.PL.Pur
 
         private void button_First_Click(object sender, EventArgs e)
         {
-            pur.nav = 1;
+            ItemsEdit.nav = 1;
             Form_Mode("Select");
         }
         private void button_Prev_Click(object sender, EventArgs e)
         {
-            pur.ID = (txt_ID.Text == "") ? "" : txt_ID.Text;
-            pur.nav = 2;
+            ItemsEdit.ID = (txt_ID.Text == "") ? 0 : Convert.ToInt32(txt_ID.Text);
+            ItemsEdit.nav = 2;
             Form_Mode("Select");
         }
         private void button_Next_Click(object sender, EventArgs e)
         {
-            pur.ID = (txt_ID.Text == "") ? "" : txt_ID.Text;
-            pur.nav = 3;
+            ItemsEdit.ID = (txt_ID.Text == "") ? 0 : Convert.ToInt32(txt_ID.Text);
+            ItemsEdit.nav = 3;
             Form_Mode("Select");
         }
         private void button_Last_Click(object sender, EventArgs e)
         {
-            pur.nav = 4;
+            ItemsEdit.nav = 4;
             Form_Mode("Select");
         }
         private void textBox_Search_KeyPress(object sender, KeyPressEventArgs e)
@@ -725,8 +585,8 @@ namespace WindowsFormsApplication1.PL.Pur
 
             if (e.KeyChar == 13 && txt_Search.Text.Trim() != "")
             {
-                pur.ID =  txt_Search.Text.Trim();
-                pur.nav = -1;
+                ItemsEdit.ID = Convert.ToInt32(txt_Search.Text.Trim());
+                ItemsEdit.nav = -1;
                 Form_Mode("Select");
             }
         }

@@ -149,7 +149,7 @@ namespace WindowsFormsApplication1.PL.Store
         }
         void var()
         {
-            items2.ID = (txt_ID.Text != "") ? txt_ID.Text : "";
+            items2.ID = (txt_ID.Text != "") ? txt_ID.Text : null;
             items2.Name = txt_ItemName.Text;
             items2.PPrice = txt_PPrice.Text.Trim() != "" ? Convert.ToDecimal(txt_PPrice.Text.Trim()) : 0;
             items2.SPrice = txt_SPrice.Text.Trim() != "" ? Convert.ToDecimal(txt_SPrice.Text.Trim()) : 0;

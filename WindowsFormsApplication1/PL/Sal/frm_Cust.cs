@@ -26,7 +26,7 @@ namespace WindowsFormsApplication1.PL.Sal
             InitializeComponent();
 
             dgv.AutoGenerateColumns = false;
-            dt_ACC = acc.Select3("Select * From ACC Where ACCProperID = 1");
+            dt_ACC = acc.Select3("Select * From ACC Where ACCProperID = 1 AND Used = 0");
             com_ParentACC.DataSource = dt_ACC;
             Fill();
         }
@@ -173,7 +173,7 @@ namespace WindowsFormsApplication1.PL.Sal
             cust.Phone1 = txt_Phone1.Text.Trim();
             cust.Phone2 = txt_Phone2.Text.Trim();
             cust.Email = txt_Email.Text.Trim();
-            cust.ParentACCID = (com_ParentACC.SelectedValue != null) ? com_ParentACC.SelectedValue.ToString() : "0";
+            cust.ParentACCID = (com_ParentACC.SelectedValue != null) ? com_ParentACC.SelectedValue.ToString() : null;
             cust.UserID = UserID;
         }
         #endregion

@@ -347,7 +347,7 @@ namespace WindowsFormsApplication1.PL.Pur
             pre.ID = (txt_ID.Text == "") ? "" : txt_ID.Text;
             pre.Date = DateTime.ParseExact(txt_Date.Text.Trim(), "dd/MM/yyyy", null);
             pre.PayTypeID = Convert.ToInt32(com_PayType.SelectedValue);
-            pre.VenID = (com_Ven.SelectedValue != null) ? com_Ven.SelectedValue.ToString() : "";
+            pre.VenID = (com_Ven.SelectedValue != null) ? com_Ven.SelectedValue.ToString() : null;
             pre.VenDocID = txt_VenDocID.Text;
             pre.Notes = txt_Notes.Text;
             pre.TotalPPrice = (txt_TotalPPrice.Text != "") ? Convert.ToDecimal(txt_TotalPPrice.Text) : 0;

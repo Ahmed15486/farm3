@@ -321,9 +321,9 @@
             // 
             // menuStrip1
             // 
-            this.menuStrip1.Location = new System.Drawing.Point(1033, 0);
+            this.menuStrip1.Location = new System.Drawing.Point(959, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(128, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(202, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -389,6 +389,11 @@
             this.imageList48.Images.SetKeyName(25, "ST_48.png");
             this.imageList48.Images.SetKeyName(26, "Backup_48.png");
             this.imageList48.Images.SetKeyName(27, "Rep_48.png");
+            this.imageList48.Images.SetKeyName(28, "ItemsEdit_48.png");
+            this.imageList48.Images.SetKeyName(29, "PayIn_48 (2).png");
+            this.imageList48.Images.SetKeyName(30, "PayOut_48 (2).png");
+            this.imageList48.Images.SetKeyName(31, "Pur_48 (2).png");
+            this.imageList48.Images.SetKeyName(32, "Sales_48.png");
             // 
             // imageList16
             // 

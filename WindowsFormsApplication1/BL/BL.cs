@@ -1850,6 +1850,95 @@ namespace WindowsFormsApplication1.BL
                 return d;
             }
         }
+        public struct ItemsEdit
+        {
+            #region var
+            public int nav { get; set; }
+            public int ID { get; set; }
+            public int JorID { get; set; }
+            public DateTime Date { get; set; }
+            public string Notes { get; set; }
+            public int UserID { get; set; }
+            public DataTable IO { get; set; }
+            #endregion
+
+            public DataSet Select()
+            {
+                DAL.DAL dal = new DAL.DAL();
+                DataSet st = new DataSet();
+
+                SqlParameter[] param = new SqlParameter[2];
+
+                param[0] = new SqlParameter("@nav", SqlDbType.Int);
+                param[0].Value = @nav;
+
+                param[1] = new SqlParameter("@ID", SqlDbType.Int);
+                param[1].Value = @ID;
+
+                st = dal.Select_Multi("ItemsEdit_Select", param);
+                return st;
+            }
+            public string Insert()
+            {
+                SqlParameter[] param = new SqlParameter[4];
+
+                param[0] = new SqlParameter("@Date", SqlDbType.DateTime);
+                param[0].Value = Date;
+
+                param[1] = new SqlParameter("@Notes", SqlDbType.VarChar, 100);
+                param[1].Value = Notes;
+
+                param[2] = new SqlParameter("@UserID", SqlDbType.Int);
+                param[2].Value = UserID;
+
+                param[3] = new SqlParameter("@IO", SqlDbType.Structured);
+                param[3].Value = IO;
+
+                DAL.DAL dal = new DAL.DAL();
+                string ID;
+                ID = dal.ExecuteCommand("ItemsEdit_Insert", param);
+
+                return ID;
+            }
+            public string Update()
+            {
+                SqlParameter[] param = new SqlParameter[5];
+
+                param[0] = new SqlParameter("@ID", SqlDbType.Int);
+                param[0].Value = ID;
+
+                param[1] = new SqlParameter("@Date", SqlDbType.DateTime);
+                param[1].Value = Date;
+
+                param[2] = new SqlParameter("@Notes", SqlDbType.VarChar, 100);
+                param[2].Value = Notes;
+
+                param[3] = new SqlParameter("@UserID", SqlDbType.Int);
+                param[3].Value = UserID;
+
+                param[4] = new SqlParameter("@IO", SqlDbType.Structured);
+                param[4].Value = IO;
+
+                DAL.DAL dal = new DAL.DAL();
+                string id;
+                id = dal.ExecuteCommand("ItemsEdit_Update", param);
+
+                return id;
+            }
+            public string Delete()
+            {
+                SqlParameter[] param = new SqlParameter[1];
+
+                param[0] = new SqlParameter("@ID", SqlDbType.Int);
+                param[0].Value = ID;
+
+                DAL.DAL dal = new DAL.DAL();
+                string d;
+                d = dal.ExecuteCommand("ItemsEdit_Delete", param);
+
+                return d;
+            }
+        }
 
         public struct ST
         {

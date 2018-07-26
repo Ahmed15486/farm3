@@ -38,8 +38,6 @@
             this.btn_Dowen = new System.Windows.Forms.Button();
             this.btn_UP = new System.Windows.Forms.Button();
             this.dgv = new System.Windows.Forms.DataGridView();
-            this.IID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.grbx_Details = new System.Windows.Forms.GroupBox();
             this.txt_ItemName = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -51,6 +49,9 @@
             this.label4 = new System.Windows.Forms.Label();
             this.com_ACCProper = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
+            this.IID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Used = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.grbx_Controls.SuspendLayout();
             this.grpx_tree.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
@@ -205,7 +206,8 @@
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.IID,
-            this.NName});
+            this.NName,
+            this.Used});
             this.dgv.Location = new System.Drawing.Point(3, 52);
             this.dgv.Name = "dgv";
             this.dgv.ReadOnly = true;
@@ -215,22 +217,6 @@
             this.dgv.TabIndex = 0;
             this.dgv.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellClick);
             this.dgv.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellDoubleClick);
-            // 
-            // IID
-            // 
-            this.IID.DataPropertyName = "ID";
-            this.IID.HeaderText = "الكود";
-            this.IID.Name = "IID";
-            this.IID.ReadOnly = true;
-            this.IID.Width = 75;
-            // 
-            // NName
-            // 
-            this.NName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.NName.DataPropertyName = "Name";
-            this.NName.HeaderText = "أسم الحساب";
-            this.NName.Name = "NName";
-            this.NName.ReadOnly = true;
             // 
             // grbx_Details
             // 
@@ -362,6 +348,32 @@
             this.label11.TabIndex = 148;
             this.label11.Text = "الخاصية";
             // 
+            // IID
+            // 
+            this.IID.DataPropertyName = "ID";
+            this.IID.HeaderText = "الكود";
+            this.IID.Name = "IID";
+            this.IID.ReadOnly = true;
+            this.IID.Width = 75;
+            // 
+            // NName
+            // 
+            this.NName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.NName.DataPropertyName = "Name";
+            this.NName.HeaderText = "أسم الحساب";
+            this.NName.Name = "NName";
+            this.NName.ReadOnly = true;
+            // 
+            // Used
+            // 
+            this.Used.DataPropertyName = "Used";
+            this.Used.HeaderText = "Used";
+            this.Used.Name = "Used";
+            this.Used.ReadOnly = true;
+            this.Used.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Used.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Used.Visible = false;
+            // 
             // frm_ACC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -412,5 +424,6 @@
         private System.Windows.Forms.Button btn_Unit_Add;
         private System.Windows.Forms.DataGridViewTextBoxColumn IID;
         private System.Windows.Forms.DataGridViewTextBoxColumn NName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Used;
     }
 }

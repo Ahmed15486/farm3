@@ -576,6 +576,13 @@ namespace WindowsFormsApplication1.PL.G
             frm_OpenStock.frm_Main = this;
             frm_OpenStock.Show();
         }
+        void btn_ItemsEdit_Click(object sender, EventArgs e)
+        {
+            PL.Store.frm_ItemsEdit frm_ItemsEdit = new Store.frm_ItemsEdit();
+            frm_ItemsEdit.UserID = UserID;
+            frm_ItemsEdit.frm_Main = this;
+            frm_ItemsEdit.Show();
+        }
         void btn_Pur_Click(object sender, EventArgs e)
         {
             PL.Pur.frm_Pur2 frm_pur = new PL.Pur.frm_Pur2();
@@ -808,6 +815,12 @@ namespace WindowsFormsApplication1.PL.G
             btn_Open.button1.Image = imageList48.Images["Open_48.png"];
             btn_Open.button1.Click += new EventHandler(btn_Open_Click);
             fpnl_SubMenue.Controls.Add(btn_Open);
+
+            Tools.btn btn_ItemEdit = new Tools.btn();
+            btn_ItemEdit.button1.Text = "تعديل أرصدة الأصناف";
+            btn_ItemEdit.button1.Image = imageList48.Images["ItemsEdit_48.png"];
+            btn_ItemEdit.button1.Click += new EventHandler(btn_ItemsEdit_Click);
+            fpnl_SubMenue.Controls.Add(btn_ItemEdit);
         }
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
@@ -815,7 +828,7 @@ namespace WindowsFormsApplication1.PL.G
 
             Tools.btn btn_Pur = new Tools.btn();
             btn_Pur.button1.Text = "استلام مشتريات";
-            btn_Pur.button1.Image = imageList48.Images["Pur_48.png"];
+            btn_Pur.button1.Image = imageList48.Images["Pur_48 (2).png"];
             btn_Pur.button1.Click += new EventHandler(btn_Pur_Click);
             fpnl_SubMenue.Controls.Add(btn_Pur);
 
@@ -831,7 +844,7 @@ namespace WindowsFormsApplication1.PL.G
 
             Tools.btn btn_Sal = new Tools.btn();
             btn_Sal.button1.Text = "فاتورة مبيعات";
-            btn_Sal.button1.Image = imageList48.Images["Sal_48.png"];
+            btn_Sal.button1.Image = imageList48.Images["Sales_48.png"];
             btn_Sal.button1.Click += new EventHandler(btn_Sal_Click);
             fpnl_SubMenue.Controls.Add(btn_Sal);
 
@@ -904,13 +917,13 @@ namespace WindowsFormsApplication1.PL.G
 
             Tools.btn btn_PayIn = new Tools.btn();
             btn_PayIn.button1.Text = "سندات القبض";
-            btn_PayIn.button1.Image = imageList48.Images["PayIn_48.png"];
+            btn_PayIn.button1.Image = imageList48.Images["PayIn_48 (2).png"];
             btn_PayIn.button1.Click += new EventHandler(btn_PayIn_Click);
             fpnl_SubMenue.Controls.Add(btn_PayIn);
 
             Tools.btn btn_PayOut = new Tools.btn();
             btn_PayOut.button1.Text = "سندات الصرف";
-            btn_PayOut.button1.Image = imageList48.Images["PayOut_48.png"];
+            btn_PayOut.button1.Image = imageList48.Images["PayOut_48 (2).png"];
             btn_PayOut.button1.Click += new EventHandler(btn_PayOut_Click);
             fpnl_SubMenue.Controls.Add(btn_PayOut);
         }

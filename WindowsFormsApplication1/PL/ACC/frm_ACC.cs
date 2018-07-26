@@ -130,7 +130,7 @@ namespace WindowsFormsApplication1.PL.ACC
 
         void var()
         {
-            acc.ID = (txt_ID.Text != "") ? txt_ID.Text : "";
+            acc.ID = (txt_ID.Text != "") ? txt_ID.Text : null;
             acc.Name = txt_ItemName.Text;
             acc.ACCProperID = (com_ACCProper.SelectedValue == null)? 0 : Convert.ToInt32(com_ACCProper.SelectedValue);
             acc.Level = level;
@@ -192,6 +192,12 @@ namespace WindowsFormsApplication1.PL.ACC
         {
             if (dgv.CurrentCell != null)
             {
+                if (dgv.SelectedRows[0].Cells["Used"].Value.ToString() == "1")
+                {
+                    MessageBox.Show("هذا الحساب مستخدم ولا يمكن حذفه");
+                    return;
+                }
+
                 if (DialogResult.Yes == MessageBox.Show("هل تريد بالفعل حذف الصنف المحدد ؟", "تأكيد الحذف", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
                 {
                     //Delete Item In DataBase
@@ -234,6 +240,11 @@ namespace WindowsFormsApplication1.PL.ACC
         }
         private void dgv_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (dgv.SelectedRows[0].Cells["Used"].Value.ToString() == "1")
+            {
+                MessageBox.Show("هذا الحساب مستخدم ولا يمكن التفرع منه");
+                return;
+            }
             if (dgv.SelectedRows.Count != 0)
             {
                 ParentID.Add(dgv.SelectedRows[0].Cells[0].Value.ToString());
